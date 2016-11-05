@@ -36,8 +36,6 @@ __status__ = 'Development'
 ###
 
 import sys
-if sys.version_info < (3, 2):
-    raise Exception('Must use Python 3.2 or later')
 
 from hpOneView.common import *
 from hpOneView.connection import *

@@ -70,6 +70,9 @@ class servers(object):
     def get_servers(self):
         return get_members(self._con.get(uri['servers']))
 
+    def get_server_hardware_types(self):
+        return get_members(self._con.get('/rest/server-hardware-types'))
+
     def set_server_powerstate(self, server, state, force=False):
         if state == 'Off' and force is True:
             powerRequest = make_powerstate_dict('Off', 'PressAndHold')
@@ -134,6 +137,10 @@ class servers(object):
 
     def get_server_profiles(self):
         body = self._con.get(uri['profiles'])
+        return get_members(body)
+
+    def get_server_profile_templates(self):
+        body = self._con.get('/rest/server-profile-templates')
         return get_members(body)
 
     def update_server_profile(self, profile, blocking=True, verbose=False):
